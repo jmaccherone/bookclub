@@ -6,8 +6,12 @@
 meteor-platform
 autopublish
 insecure
-jquery
-bootstrap
 iron:router
 mrt:fullcalendar
+mizzao:bootstrap-3
+accounts-password
+coffeescript
+less
+linto:fontawesome
+mquandalle:jade
 

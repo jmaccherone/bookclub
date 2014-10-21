@@ -1,28 +1,27 @@
+CalEvents = new Meteor.Collection('calevents');
+Session.setDefault('editing_calevent', null);
+Session.setDefault('showEditEvent', false);
 
-  CalEvents = new Meteor.Collection('calevents');
-  Session.setDefault('editing_calevent', null);
-  Session.setDefault('showEditEvent', false);
- 
+//
+//Router.map(function () {
+//    this.route('homepage', {path: '/'});
+//});
+//
+//Router.map(function () {
+//    this.route('calendar', {path: '/calendar'});
+//});
 
-  Router.map(function (){
-    this.route('homepage', {path: '/'});
-  });
+Template.calendar.rendered = function () {
+    $('#calendar').fullCalendar({
+        dayClick: function (date, allDay, jsEvent, view) {
 
-  Router.map(function() {
-    this.route('calendar', {path: '/calendar'});
-  });
+        },
+        eventClick: function (calEvent, jsEvent, view) {
 
-Template.calendar.rendered = function(){
-  $('#calendar').fullCalendar({
-    dayClick:function(date, allDay, jsEvent, view){
+        },
+        events: function (start, end, callback) {
 
-    },
-    eventClick:function(calEvent, jsEvent, view) {
-
-    },
-    events:function(start, end, callback) {
-
-    }
-  });
+        }
+    });
 }
 
