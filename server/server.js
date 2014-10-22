@@ -10,12 +10,15 @@
 //CALENDAR
 
 Meteor.methods({
-    'dayClick':function () {
+    'dayClick':function (date) {
            // alert('a day has been clicked!');
         console.log("You are getting to dayClick function");
-        CalEvents.insert({title:'New Event', start:'2014-10-15', end:'2014-10-15'});
+        console.log("date " + date);
+      //  console.log('lastMod: ' + lastMod);
+        CalEvents.insert({title:'New Event', start: date, end: date});
           //  CalEvents.insert({title: "New Event", start:date, end:date});
-        //Session.set('lastMod', new Date());
+
+
         }
     });
 
