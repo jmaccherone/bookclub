@@ -1,0 +1,47 @@
+template(name="mcalendar")
+  #page-wrapper
+    .row
+      .col-xs-2
+        h1
+          button#today.btn.btn-primary Today
+      .col-xs-1
+        h1.calendar-head
+          i#previousMonth.fa.fa-caret-left
+      .col-xs-6
+        h1.calendar-head
+          | #{selectedMonthString}
+      .col-xs-1
+        h1.calendar-head
+          i#nextMonth.fa.fa-caret-right
+    .row
+      .col-lg-12
+        .table-responsive
+          table#month.table.table-bordered
+            thead
+              tr
+                th.calendar-head Sun
+                th.calendar-head Mon
+                th.calendar-head Tue
+                th.calendar-head Wed
+                th.calendar-head Thu
+                th.calendar-head Fri
+                th.calendar-head Sat
+            tbody
+              each weeksInMonth
+                +week
+
+template(name="week")
+  tr
+    each week
+      +day
+
+template(name="day")
+  td(id=id class=currentDay).calendar-day
+    button(type='button')#new-event.btn.btn-xs.btn-primary +
+    div(class=notCurrentMonth).day-number #{day}
+    div.calendar-day-contents
+      each events
+        +event
+
+template(name='event')
+  div #{time}: #{name}
