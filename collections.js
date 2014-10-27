@@ -8,4 +8,4 @@ CalEvents = new Meteor.Collection('calevents');
 //CalEvents.remove({title:'Test Event'});
 //test insertion
 
-CalEvents.insert({title:'Test Event', start:'2014-10-21', end: '2014-10-21'});
+//CalEvents.insert({title:'Test Event', start:'2014-10-21', end: '2014-10-21'});

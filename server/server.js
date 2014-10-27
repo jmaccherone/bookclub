@@ -12,10 +12,11 @@
 Meteor.methods({
     'dayClick':function (date) {
            // alert('a day has been clicked!');
-        console.log("You are getting to dayClick function");
-        console.log("date " + date);
-      //  console.log('lastMod: ' + lastMod);
-        CalEvents.insert({title:'New Event', start: date, end: date});
+        //console.log("You are getting to dayClick function");
+
+        //var convertedDate = date.year + "-" + date.month + "-" + date.day;
+        console.log(date);
+        CalEvents.insert({name:'New Event', date:date});
        // CalEvents.insert({title:'Test Event', start:"2014-10-21", end:'2014-10-21'});
         //console.log("lastMod in server: " + Session.get(lastMod));
 

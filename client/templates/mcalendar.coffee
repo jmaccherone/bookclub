@@ -78,7 +78,7 @@ Template.mcalendar.helpers(
 
 Template.day.helpers(
   id: () ->
-    this.toString()
+    return this.toString()
 
   currentDay: () ->
     today = new Date()
@@ -92,14 +92,25 @@ Template.day.helpers(
 
   events: () ->
     console.log('Code for retrieving events goes here', this)  # Note: this contains the current date as a tzTime.Time object
-    output = [
-      {name: 'Some event', time: '6pm'}
-      {name: 'Some other event', time: '9pm'}
-    ]
+  # if there is an event in CalEvents on this date, show CalEvents.name and Calevents.startTime
+  #  CalEvents.findOne(name='New Event')
 
+  #  CalEvents.forEach: () ->
+  #    events.push
+  #      id:evt._id
+  #      name:evt.name
+  #      start:evt.start
+  #      end:evt.end
+    events = CalEvents.find().fetch()
+    output = []
+    console.log(this)
+    for e in events
+      output.push({name: e.name, time: e.start})
+    return output
 )
 
 Template.day.events(
   'click #new-event': () ->
     console.log('New event code goes here.', this)  # Note: this contains the current date as a tzTime.Time object
+    Meteor.call('dayClick', this)
 )
