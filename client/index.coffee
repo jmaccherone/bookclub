@@ -4,6 +4,7 @@ Meteor.startup(() ->
   Session.set('signUpSuccessMessage', false)
   Session.set('loginErrorMessage', false)
 
+
   new ResizeSensor()
 
   $(window).bind("load resize", () ->
@@ -58,3 +59,5 @@ Template.taskDropdownElement.helpers(
   style: () ->
     return "width: " + this.percentComplete + "%"
 )
+
+

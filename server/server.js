@@ -16,8 +16,8 @@ Meteor.methods({
         console.log("date " + date);
       //  console.log('lastMod: ' + lastMod);
         CalEvents.insert({title:'New Event', start: date, end: date});
-          //  CalEvents.insert({title: "New Event", start:date, end:date});
-
+       // CalEvents.insert({title:'Test Event', start:"2014-10-21", end:'2014-10-21'});
+        //console.log("lastMod in server: " + Session.get(lastMod));
 
         }
     });
