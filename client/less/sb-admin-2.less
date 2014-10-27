@@ -224,6 +224,12 @@ body {
 
 // Buttons
 
+.btn-primary {
+  background-color: @brand-primary;
+  border-color: @brand-primary;
+  border-bottom-color: darken(@brand-primary, 10%);
+}
+
 .btn-outline {
   color: inherit;
   background-color: transparent;
@@ -457,4 +463,8 @@ table.dataTable thead .sorting:after {
       color: darken(@brand-warning, 15%);
     }
   }
+}
+
+.center {
+  text-align: center !important;
 }

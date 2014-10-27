@@ -17,5 +17,5 @@ mquandalle:jade
 jquery
 email
 mrt:moment
-bootstrap
-
+meteorhacks:npm
+npm-container
