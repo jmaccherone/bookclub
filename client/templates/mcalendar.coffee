@@ -104,19 +104,18 @@ Template.day.helpers(
 #    events = CalEvents.find().fetch()
     dayString = this.toString()
     oneTimeEvents = OneTimeEvents.find({on: dayString}).fetch()
-    recurringEvents = RecurringEvents.find().fetch()
     output = []
     for e in oneTimeEvents
       row = {name: e.name, time: "#{e.startTime}-#{e.endTime}"}
       if e.recurringEventID?
-        recurringEvent = RecurringEvents.findOne({_id: e.recurringEventID})
-        console.log('recurring', recurringEvent)
+        recurringEvent = RecurringEvents.findOne(e.recurringEventID)
         row.time = "#{recurringEvent.startTime}-#{recurringEvent.endTime}"
-        bookClub = BookClubs.findOne({_id: recurringEvent.bookClubID})
+        bookClub = BookClubs.findOne(recurringEvent.bookClubID)
+      else
+        bookClub = BookClubs.findOne(e.bookClubID)
 
       if (not row.name?) or row.name is ''
         row.name = bookClub.name
-      console.log(row)
       output.push(row)
     return output
 )
