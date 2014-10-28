@@ -91,7 +91,7 @@ Template.day.helpers(
       return null
 
   events: () ->
-    console.log('Code for retrieving events goes here', this)  # Note: this contains the current date as a tzTime.Time object
+#    console.log('Code for retrieving events goes here', this)  # Note: this contains the current date as a tzTime.Time object
   # if there is an event in CalEvents on this date, show CalEvents.name and Calevents.startTime
   #  CalEvents.findOne(name='New Event')
 
@@ -101,11 +101,23 @@ Template.day.helpers(
   #      name:evt.name
   #      start:evt.start
   #      end:evt.end
-    events = CalEvents.find().fetch()
+#    events = CalEvents.find().fetch()
+    dayString = this.toString()
+    oneTimeEvents = OneTimeEvents.find({on: dayString}).fetch()
+    recurringEvents = RecurringEvents.find().fetch()
     output = []
-    console.log(this)
-    for e in events
-      output.push({name: e.name, time: e.start})
+    for e in oneTimeEvents
+      row = {name: e.name, time: "#{e.startTime}-#{e.endTime}"}
+      if e.recurringEventID?
+        recurringEvent = RecurringEvents.findOne({_id: e.recurringEventID})
+        console.log('recurring', recurringEvent)
+        row.time = "#{recurringEvent.startTime}-#{recurringEvent.endTime}"
+        bookClub = BookClubs.findOne({_id: recurringEvent.bookClubID})
+
+      if (not row.name?) or row.name is ''
+        row.name = bookClub.name
+      console.log(row)
+      output.push(row)
     return output
 )
 

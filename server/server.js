@@ -41,3 +41,22 @@ Meteor.methods({
     }
 });
 
+Meteor.startup(function () {
+    testData = this.testData;
+
+    RecurringEvents.remove({});
+    OneTimeEvents.remove({});
+    BookClubs.remove({});
+
+    testData.RecurringEvents.forEach(function (e) {
+        RecurringEvents.insert(e);
+    });
+
+    testData.OneTimeEvents.forEach(function (e) {
+        OneTimeEvents.insert(e);
+    })
+
+    testData.BookClubs.forEach(function (row) {
+        BookClubs.insert(row);
+    })
+});
