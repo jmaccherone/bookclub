@@ -36,7 +36,7 @@ template(name="week")
       +day
 
 template(name="day")
-  td(id=id class=currentDay).calendar-day
+  td(width = '14%' id=id class=currentDay).calendar-day
     button(type='button')#new-event.btn.btn-xs.btn-primary +
     div(class=notCurrentMonth).day-number #{day}
     div.calendar-day-contents

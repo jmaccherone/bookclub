@@ -73,6 +73,7 @@ class NavRouteList
           Router.go(r.to)
         else
           Session.set('active', @route.name)
+      this.next()
     return onRun
 
 this.NavRoute = NavRoute
