@@ -23,6 +23,7 @@ navRoutes = [
   new NavRoute('homepage', 'fa-home')
   new NavRoute('calendar', 'fa-calendar')
   new NavRoute('mcalendar', 'fa-calendar', {label: 'Meteor Calendar'})
+  new NavRoute('store', 'fa-shopping-cart', {label: "Store"})
   new NavRoute('pages', 'fa-files-o', {label: "Sample Pages"})
   new NavRoute('blank', '', {parentName: 'pages', label: "Blank Page"})
   new NavRoute('sign-up-ref', '', {redirect: 'sign-up', parentName: 'pages', layoutTemplate: 'loginLayout', label: 'Sign Up'})
