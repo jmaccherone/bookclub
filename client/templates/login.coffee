@@ -19,6 +19,12 @@ Template.loginForm.events({
       Router.go('/sign-up')
     ).modal('hide')
     return false
+
+  'click #facebook-button': () ->
+    Meteor.loginWithFacebook( (err) ->
+      if err?
+        console.log("Facebook login error")
+    )
 })
 
 Template.signUp.events({
